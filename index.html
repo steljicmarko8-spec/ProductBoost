@@ -1,0 +1,856 @@
+ProductBoost 2.0 — kompletan sajt
+
+
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ProductBoost 2.0</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #080d1a;
+            color: white;
+        }
+
+        .container {
+            width: 92%;
+            max-width: 1050px;
+            margin: auto;
+        }
+
+        header {
+            text-align: center;
+            padding: 55px 10px 35px;
+        }
+
+        header h1 {
+            font-size: 46px;
+            margin: 0 0 12px;
+        }
+
+        header h1 span {
+            color: #22c55e;
+        }
+
+        header p {
+            color: #9ca8c0;
+            font-size: 18px;
+        }
+
+        .card {
+            background: #121a2d;
+            border: 1px solid #263451;
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            border: 1px solid #354361;
+            background: #0b1222;
+            color: white;
+            font-size: 16px;
+            outline: none;
+        }
+
+        input:focus,
+        select:focus {
+            border-color: #22c55e;
+        }
+
+        button {
+            border: none;
+            border-radius: 10px;
+            padding: 13px 18px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .generate {
+            width: 100%;
+            background: #22c55e;
+            color: white;
+            font-size: 18px;
+            padding: 16px;
+        }
+
+        .generate:hover {
+            background: #16a34a;
+        }
+
+        .result {
+            display: none;
+        }
+
+        .result-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .result-title h2 {
+            margin: 0;
+        }
+
+        .output {
+            background: #0b1222;
+            border: 1px solid #2d3a56;
+            border-radius: 12px;
+            padding: 22px;
+            white-space: pre-wrap;
+            line-height: 1.65;
+            color: #e8edf7;
+            min-height: 300px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+        .copy {
+            background: #3b82f6;
+            color: white;
+        }
+
+        .copy:hover {
+            background: #2563eb;
+        }
+
+        .new {
+            background: #334155;
+            color: white;
+        }
+
+        .new:hover {
+            background: #475569;
+        }
+
+        .history-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .history-title h2 {
+            margin: 0;
+        }
+
+        .clear {
+            background: #ef4444;
+            color: white;
+        }
+
+        .clear:hover {
+            background: #dc2626;
+        }
+
+        .history-item {
+            background: #0b1222;
+            border: 1px solid #293752;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        .history-item strong {
+            color: #22c55e;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 35px;
+        }
+
+        .feature {
+            background: #121a2d;
+            border: 1px solid #263451;
+            padding: 22px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .feature h3 {
+            margin-bottom: 8px;
+        }
+
+        .feature p {
+            color: #9ca8c0;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #68748c;
+        }
+
+        @media (max-width: 700px) {
+
+            header h1 {
+                font-size: 34px;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .result-title {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+
+<div class="container">
+
+    <header>
+        <h1>🚀 Product<span>Boost</span></h1>
+
+        <p>
+            Napravi reklame, TikTok scenarije i opise proizvoda.
+        </p>
+    </header>
+
+
+    <!-- INPUT -->
+
+    <div class="card">
+
+        <label for="product">
+            Naziv proizvoda
+        </label>
+
+        <input
+            id="product"
+            type="text"
+            placeholder="npr. Mini bezicni mikrofon"
+        >
+
+
+        <label for="price">
+            Cena proizvoda
+        </label>
+
+        <input
+            id="price"
+            type="text"
+            placeholder="npr. 1999 din"
+        >
+
+
+        <label for="audience">
+            Ciljna grupa
+        </label>
+
+        <input
+            id="audience"
+            type="text"
+            placeholder="npr. TikTok kreatori"
+        >
+
+
+        <label for="problem">
+            Koji problem rešava?
+        </label>
+
+        <input
+            id="problem"
+            type="text"
+            placeholder="npr. los zvuk na telefonu"
+        >
+
+
+        <label for="style">
+            Stil
+        </label>
+
+        <select id="style">
+
+            <option value="viral">
+                🔥 Viralni
+            </option>
+
+            <option value="problem">
+                🧠 Problem → Rešenje
+            </option>
+
+            <option value="curiosity">
+                😱 Radoznalost
+            </option>
+
+            <option value="sales">
+                💰 Prodajni
+            </option>
+
+            <option value="funny">
+                😂 Funny
+            </option>
+
+        </select>
+
+
+        <button
+            class="generate"
+            onclick="generate()"
+        >
+            🚀 GENERIŠI MARKETING
+        </button>
+
+    </div>
+
+
+    <!-- RESULT -->
+
+    <div
+        class="card result"
+        id="result"
+    >
+
+        <div class="result-title">
+
+            <h2>
+                ✨ Tvoj marketing
+            </h2>
+
+        </div>
+
+
+        <div
+            class="output"
+            id="output"
+        ></div>
+
+
+        <div class="buttons">
+
+            <button
+                class="copy"
+                onclick="copyResult()"
+            >
+                📋 KOPIRAJ
+            </button>
+
+            <button
+                class="new"
+                onclick="generate()"
+            >
+                🔄 NOVA VERZIJA
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- HISTORY -->
+
+    <div class="card">
+
+        <div class="history-title">
+
+            <h2>
+                📚 Istorija
+            </h2>
+
+            <button
+                class="clear"
+                onclick="clearHistory()"
+            >
+                Obriši
+            </button>
+
+        </div>
+
+        <div id="history">
+            Nema sačuvanih reklama.
+        </div>
+
+    </div>
+
+
+    <!-- FEATURES -->
+
+    <div class="features">
+
+        <div class="feature">
+
+            <h3>🔥 TikTok</h3>
+
+            <p>
+                Hookovi i scenariji za kratke video reklame.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <h3>🛒 Prodaja</h3>
+
+            <p>
+                Naslovi, opisi i pozivi na kupovinu.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <h3>💾 Istorija</h3>
+
+            <p>
+                Sačuvaj prethodno napravljene reklame.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<footer>
+    ProductBoost © 2026
+</footer>
+
+
+<script>
+
+
+function generate() {
+
+    const product =
+        document.getElementById("product").value.trim();
+
+    const price =
+        document.getElementById("price").value.trim();
+
+    const audience =
+        document.getElementById("audience").value.trim();
+
+    const problem =
+        document.getElementById("problem").value.trim();
+
+    const style =
+        document.getElementById("style").value;
+
+
+    if (!product || !price || !audience || !problem) {
+
+        alert("Popuni sva polja!");
+
+        return;
+
+    }
+
+
+    let hook = "";
+    let ad = "";
+
+
+    if (style === "viral") {
+
+        hook =
+        `"Čekaj... kako ovo nisam otkrio ranije? 😳"`;
+
+        ad = `
+🔥 VIRALNI TIKTOK
+
+HOOK:
+
+${hook}
+
+
+🎬 SCENARIO:
+
+0–3 sekunde:
+"Čekaj... moraš da vidiš ovo!"
+
+
+3–10 sekundi:
+
+Ako si ${audience}, verovatno znaš koliko
+problem sa ${problem} može da bude iritantan.
+
+Zato sam probao ${product}.
+
+
+10–20 sekundi:
+
+Mali je, praktičan i jednostavan za korišćenje.
+
+A cena?
+
+💰 ${price}
+
+
+20–25 sekundi:
+
+Ako imaš isti problem, možda je ovo
+upravo ono što ti treba.
+
+
+🛒 POZIV NA AKCIJU:
+
+Pogledaj proizvod i saznaj više.
+
+
+#️⃣ HASHTAGOVI:
+
+#tiktok #viral #fyp #gadget #shopping
+#${product.replaceAll(" ", "")}
+`;
+
+    }
+
+
+    else if (style === "problem") {
+
+        hook =
+        `"Da li i tebi problem pravi ${problem}?"`;
+
+        ad = `
+🧠 PROBLEM → REŠENJE
+
+HOOK:
+
+${hook}
+
+
+PROBLEM:
+
+Ako si ${audience}, znaš koliko
+${problem} može da pokvari iskustvo.
+
+
+REŠENJE:
+
+${product} je napravljen upravo da
+pomogne kod ovog problema.
+
+
+PREDNOST:
+
+Jednostavno korišćenje, praktičan dizajn
+i lako prenošenje.
+
+
+💰 CENA:
+
+${price}
+
+
+CTA:
+
+Reši problem na jednostavan način.
+
+
+#️⃣ HASHTAGOVI:
+
+#problem #solution #tiktok #gadget #fyp
+`;
+
+    }
+
+
+    else if (style === "curiosity") {
+
+        hook =
+        `"Ne izgleda posebno... dok ne vidiš šta radi. 👀"`;
+
+        ad = `
+😱 RADOZNALOST
+
+HOOK:
+
+${hook}
+
+
+REKLAMA:
+
+Na prvi pogled, ${product} izgleda
+kao običan proizvod.
+
+Ali postoji razlog zašto privlači pažnju
+među ${audience}.
+
+Ako ti smeta ${problem},
+ovo bi moglo da te iznenadi.
+
+
+💰 Cena: ${price}
+
+
+CTA:
+
+Pogledaj kako radi. 👀
+
+
+#️⃣ HASHTAGOVI:
+
+#curiosity #tiktok #viral #fyp #musthave
+`;
+
+    }
+
+
+    else if (style === "sales") {
+
+        hook =
+        `"Ako želiš jednostavno rešenje za ${problem}, pogledaj ovo."`;
+
+        ad = `
+💰 PRODAJNA REKLAMA
+
+HOOK:
+
+${hook}
+
+
+PROIZVOD:
+
+${product}
+
+
+ZAŠTO GA KUPITI?
+
+✔ Jednostavan za korišćenje
+✔ Praktičan
+✔ Lako prenosiv
+✔ Pogodan za ${audience}
+
+
+PROBLEM:
+
+${problem}
+
+
+CENA:
+
+💰 ${price}
+
+
+CTA:
+
+Poruči svoj primerak danas.
+
+
+#️⃣ HASHTAGOVI:
+
+#shopping #sale #deal #tiktokshop #fyp
+`;
+
+    }
+
+
+    else {
+
+        hook =
+        `"Ja: Ne treba mi još jedan gadget. 😂"`;
+
+        ad = `
+😂 FUNNY TIKTOK
+
+HOOK:
+
+${hook}
+
+
+SCENA:
+
+Ja pre kupovine:
+
+"Ma ne treba mi ovo."
+
+
+5 minuta kasnije:
+
+"Kako sam do sada živeo bez ovoga?" 😂
+
+
+PROIZVOD:
+
+${product}
+
+
+Ako si ${audience} i stalno te nervira
+${problem}, možda ćeš razumeti. 😎
+
+
+💰 Cena: ${price}
+
+
+CTA:
+
+Nemoj reći da te nismo upozorili.
+
+
+#️⃣ HASHTAGOVI:
+
+#funny #tiktok #fyp #gadget #viral
+`;
+
+    }
+
+
+    document.getElementById("output").textContent = ad;
+
+    document.getElementById("result").style.display = "block";
+
+
+    saveHistory(product, ad);
+
+}
+
+
+function copyResult() {
+
+    const text =
+        document.getElementById("output").textContent;
+
+
+    navigator.clipboard.writeText(text)
+        .then(function() {
+
+            alert("Kopirano! 📋");
+
+        })
+        .catch(function() {
+
+            alert("Kopiranje nije uspelo.");
+
+        });
+
+}
+
+
+function saveHistory(product, ad) {
+
+    let history =
+        JSON.parse(localStorage.getItem("productBoostHistory")) || [];
+
+
+    history.unshift({
+
+        product: product,
+
+        ad: ad,
+
+        date: new Date().toLocaleString("sr-RS")
+
+    });
+
+
+    history =
+        history.slice(0, 10);
+
+
+    localStorage.setItem(
+        "productBoostHistory",
+        JSON.stringify(history)
+    );
+
+
+    showHistory();
+
+}
+
+
+function showHistory() {
+
+    const box =
+        document.getElementById("history");
+
+
+    let history =
+        JSON.parse(localStorage.getItem("productBoostHistory")) || [];
+
+
+    if (history.length === 0) {
+
+        box.innerHTML =
+            "Nema sačuvanih reklama.";
+
+        return;
+
+    }
+
+
+    box.innerHTML = "";
+
+
+    history.forEach(function(item) {
+
+        const div =
+            document.createElement("div");
+
+
+        div.className =
+            "history-item";
+
+
+        div.innerHTML =
+            `<strong>${item.product}</strong><br>
+             <small>${item.date}</small>`;
+
+
+        box.appendChild(div);
+
+    });
+
+}
+
+
+function clearHistory() {
+
+    localStorage.removeItem(
+        "productBoostHistory"
+    );
+
+    showHistory();
+
+}
+
+
+showHistory();
+
+
+</script>
+
+</body>
+</html>
